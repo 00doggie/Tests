@@ -1,0 +1,8 @@
+{
+  "variants": {
+    "": {
+      "model": "testingmod:block/ruby_block"
+    }
+  }
+}
+

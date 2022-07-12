@@ -1,0 +1,8 @@
+{
+  "replace": false,
+  "values": [
+    "testingmod:ruby_ore",
+    "testingmod:ruby_ore_deepslate",
+    "testingmod:ruby_block"
+  ]
+}
