@@ -25,7 +25,7 @@ public class GermanShepardRenderer extends GeoEntityRenderer<GermanShepardEntity
     public RenderType getRenderType(GermanShepardEntity animatable, float partialTicks, PoseStack stack,
                                     MultiBufferSource renderTypeBuffer, VertexConsumer vertexBuilder, int packedLightIn,
                                     ResourceLocation textureLocation) {
-        stack.scale(1.1F, 1.1F, 1.1F);
+        stack.scale(1.0F, 1.0F, 1.0F);
         return super.getRenderType(animatable, partialTicks, stack, renderTypeBuffer, vertexBuilder, packedLightIn, textureLocation);
     }
 }

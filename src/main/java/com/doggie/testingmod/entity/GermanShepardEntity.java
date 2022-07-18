@@ -63,14 +63,13 @@ public class GermanShepardEntity  extends TamableAnimal implements NeutralMob, I
         EntityType<?> entitytype = p_30437_.getType();
         return entitytype == EntityType.SHEEP || entitytype == EntityType.RABBIT || entitytype == EntityType.FOX;
     };
-    private static final float START_HEALTH = 8.0F;
+    public static float START_HEALTH = 8.0F;
     private static final float TAME_HEALTH = 20.0F;
     private float interestedAngle;
     private float interestedAngleO;
     private boolean isWet;
     private boolean isShaking;
-
-
+    static int dog;
     private float shakeAnim;
     private float shakeAnimO;
     private static final UniformInt PERSISTENT_ANGER_TIME = TimeUtil.rangeOfSeconds(20, 39);
@@ -83,7 +82,6 @@ public class GermanShepardEntity  extends TamableAnimal implements NeutralMob, I
         this.setPathfindingMalus(BlockPathTypes.POWDER_SNOW, -1.0F);
         this.setPathfindingMalus(BlockPathTypes.DANGER_POWDER_SNOW, -1.0F);
     }
-
 
 
 
@@ -312,7 +310,7 @@ public class GermanShepardEntity  extends TamableAnimal implements NeutralMob, I
         ItemStack itemstack = p_30412_.getItemInHand(p_30413_);
         Item item = itemstack.getItem();
         if (this.level.isClientSide) {
-            boolean flag = this.isOwnedBy(p_30412_) || this.isTame() || itemstack.is(Items.BONE) && !this.isTame() && !this.isAngry();
+            boolean flag = this.isOwnedBy(p_30412_) || this.isTame() || itemstack.is(Items.AMETHYST_SHARD) && !this.isTame() && !this.isAngry();
             return flag ? InteractionResult.CONSUME : InteractionResult.PASS;
         } else {
             if (this.isTame()) {
@@ -348,7 +346,7 @@ public class GermanShepardEntity  extends TamableAnimal implements NeutralMob, I
 
                     return InteractionResult.SUCCESS;
                 }
-            } else if (itemstack.is(Items.BONE) && !this.isAngry()) {
+            } else if (itemstack.is(Items.AMETHYST_SHARD) && !this.isAngry()) {
                 if (!p_30412_.getAbilities().instabuild) {
                     itemstack.shrink(1);
                 }
@@ -523,10 +521,19 @@ public class GermanShepardEntity  extends TamableAnimal implements NeutralMob, I
 
     private <P extends IAnimatable> PlayState predicate(AnimationEvent<P> event) {
         if(isInSittingPose()) {
+
+            event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.wolf.setup", true));
             event.getController().setAnimation(new AnimationBuilder().addAnimation("dog_sitting", true));
             return PlayState.CONTINUE;
         }
-        event.getController().setAnimation(new AnimationBuilder().addAnimation("idle", true));
+        if(isShaking){
+            event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.wolf.setup", true));
+            event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.wolf.shaking", true));
+        }
+        event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.wolf.setup", true));
+        event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.wolf.leg_default", true));
+        event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.wolf.head_rot_z", true));
+        event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.wolf.tail_default", true));
         return PlayState.CONTINUE;
     }
 

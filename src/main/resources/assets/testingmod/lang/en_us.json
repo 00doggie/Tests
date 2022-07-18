@@ -16,5 +16,7 @@
   "block.testingmod.ruby_block": "Ruby Block",
   "block.testingmod.ruby_ore": "Ruby Ore",
   "block.testingmod.ruby_ore_deepslate": " Deepslate Ruby Ore",
-  "attribute.name.generic.attack_range": "Attack Range"
+  "enchantment.testingmod.leech": "Leech",
+  "enchantment.testingmod.freeze": "Freeze",
+  "effect.testingmod.freeze": "Freeze"
 }

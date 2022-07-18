@@ -3,9 +3,15 @@ package com.doggie.testingmod.init;
 import com.doggie.testingmod.TestingMod;
 import com.doggie.testingmod.entity.ModEntityTypes;
 //import com.doggie.testingmod.init.advanceditems.TrainingStick;
+import com.doggie.testingmod.entity.client.CarEntity;
 import com.doggie.testingmod.init.advanceditems.*;
+import net.minecraft.tags.TagKey;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.entity.item.ItemEntity;
+import net.minecraft.world.entity.vehicle.AbstractMinecart;
 import net.minecraft.world.item.*;
+import net.minecraft.world.level.block.Block;
 import net.minecraftforge.common.ForgeSpawnEggItem;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -14,6 +20,7 @@ import net.minecraftforge.registries.RegistryObject;
 import java.util.function.Supplier;
 
 public class ItemInit {
+
 
     public static final DeferredRegister <Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, TestingMod.MOD_ID);
 
@@ -51,6 +58,7 @@ public class ItemInit {
 
 
 
+
     public static final RegistryObject<Item> FIRE_HELMET = ITEMS.register("fire_helmet",
             () -> new FireArmorItem(ArmorMaterials.RUBY, EquipmentSlot.HEAD,
                     new Item.Properties().tab(TestingMod.TUTORIAL_TAB)));
@@ -70,6 +78,10 @@ public class ItemInit {
 
     public static final RegistryObject<Item> RUBY_PICKAXE = ITEMS.register("ruby_pickaxe",
             () -> new PickaxeItem(Tiers.RUBY, 2, -2.8f,
+                    new Item.Properties().tab(TestingMod.TUTORIAL_TAB)));
+
+    public static final RegistryObject<Item> RUBY_HAMMER = ITEMS.register("ruby_hammer",
+            () -> new HammerItem(5, 2, Tiers.RUBY,TagKeyInit.Blocks.Hammer,
                     new Item.Properties().tab(TestingMod.TUTORIAL_TAB)));
 
     public static final RegistryObject<Item> RUBY_SWORD = ITEMS.register("ruby_sword",
@@ -105,6 +117,16 @@ public class ItemInit {
     public static final RegistryObject<Item> GERMAN_SHEPARD_SPAWN_EGG = ITEMS.register("german_shepard_spawn_egg",
             () -> new ForgeSpawnEggItem(ModEntityTypes.GERMAN_SHEPARD,0xb98349, 0x9e7347,
                     new Item.Properties().tab(TestingMod.TUTORIAL_TAB)));
+    public static final RegistryObject<Item> SLINGSHOT = ITEMS.register("slingshot",
+            () -> new SlingShotItem(new Item.Properties().tab(TestingMod.TUTORIAL_TAB).durability(500)));
+
+   public static final RegistryObject <Item> SLINGSHOT_AMMO = ITEMS.register("slingshot_ammo",
+           () -> new SlingShotAmmoItem(new Item.Properties().tab(TestingMod.TUTORIAL_TAB), 1.5F));
+
+public static final RegistryObject<Item> CAR = ITEMS.register("car",
+        () ->   new MinecartItem(CarEntity.Type.RIDEABLE, new Item.Properties().tab(TestingMod.TUTORIAL_TAB)));
+
+
 
    
 

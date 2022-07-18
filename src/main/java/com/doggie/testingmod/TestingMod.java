@@ -1,22 +1,22 @@
 package com.doggie.testingmod;
 
+import com.doggie.testingmod.effect.ModEffects;
+import com.doggie.testingmod.enchantment.ModEnchantments;
 import com.doggie.testingmod.entity.ModEntityTypes;
+import com.doggie.testingmod.entity.client.CarRenderer;
 import com.doggie.testingmod.entity.client.GermanShepardRenderer;
 import com.doggie.testingmod.entity.client.TestingModClient;
-import com.doggie.testingmod.init.BlockInit;
-import com.doggie.testingmod.init.ItemInit;
+import com.doggie.testingmod.init.*;
 //import com.doggie.testingmod.init.ModScreens;
 import com.doggie.testingmod.init.advanceditems.LongSwordItem;
+import com.doggie.testingmod.networks.packets.PacketHandler;
 import net.minecraft.client.renderer.entity.EntityRenderers;
+import net.minecraft.client.renderer.entity.MinecartRenderer;
 import net.minecraft.client.renderer.entity.ThrownItemRenderer;
-import net.minecraft.client.renderer.item.ItemProperties;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.IEventBus;
 
 import net.minecraftforge.fml.common.Mod;
@@ -46,6 +46,8 @@ public class TestingMod {
         BlockInit.BLOCKS.register(bus);
         ItemInit.ITEMS.register(bus);
 
+        ModEnchantments.ENCHANTMENTS.register(bus);
+        ModEffects.MOB_EFFECTS.register(bus);
 
 
         ModEntityTypes.register(bus);
@@ -70,6 +72,10 @@ public class TestingMod {
 
         EntityRenderers.register(ModEntityTypes.GERMAN_SHEPARD.get(), GermanShepardRenderer::new);
         EntityRenderers.register(ModEntityTypes.ROCK.get(), ThrownItemRenderer::new);
+
+        ModItemProperties.addCustomItemProperties();
+        PacketHandler.init();
+        KeybindsInit.register(event);
 
 
 

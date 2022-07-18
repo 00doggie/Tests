@@ -1,0 +1,194 @@
+{
+	"format_version": "1.8.0",
+	"animations": {
+		"animation.wolf.angry": {
+			"loop": true,
+			"bones": {
+				"tail": {
+					"rotation": [0, "query.is_angry ? -this : (math.cos(query.modified_distance_moved * 38.17) * query.modified_move_speed * 80.22 - this)", 0]
+				}
+			}
+		},
+		"animation.wolf.baby_scaling": {
+			"loop": true,
+			"bones": {
+				"head": {
+					"position": [0, 1, -2],
+					"scale": 1.6
+				}
+			}
+		},
+		"animation.wolf.head_rot_z": {
+			"loop": true,
+			"bones": {
+				"head": {
+					"rotation": [0, 0, "(query.is_interested ? (query.head_roll_angle * 57.3) : 0) + (query.is_shaking_wetness ? variable.head_rot_z : 0) - this"]
+				}
+			}
+		},
+		"animation.wolf.leg_default": {
+			"loop": true,
+			"bones": {
+				"leg0": {
+					"rotation": ["math.cos(query.modified_distance_moved * 38.17) * 80.22 * query.modified_move_speed - this", 0, 0]
+				},
+				"leg1": {
+					"rotation": ["math.cos(query.modified_distance_moved * 38.17 + 180) * 80.22 * query.modified_move_speed - this", 0, 0]
+				},
+				"leg2": {
+					"rotation": ["math.cos(query.modified_distance_moved * 38.17 + 180) * 80.22 * query.modified_move_speed - this", 0, 0]
+				},
+				"leg3": {
+					"rotation": ["math.cos(query.modified_distance_moved * 38.17) * 80.22 * query.modified_move_speed - this", 0, 0]
+				}
+			}
+		},
+		"animation.wolf.setup": {
+			"loop": true,
+			"bones": {
+				"body": {
+					"position": ["-this", "-14 - this", "2.0 - this"],
+					"rotation": ["90 - this", 0, 0]
+				},
+				"leg0": {
+					"position": ["-2.5 - this", "-16 - this", "7 - this"]
+				},
+				"leg1": {
+					"position": ["0.5 - this", "-16 - this", "7 - this"]
+				},
+				"leg2": {
+					"position": ["-2.5 - this", "-16 - this", "-4 - this"]
+				},
+				"leg3": {
+					"position": ["0.5 - this", "-16 - this", "-4 - this"]
+				},
+				"tail": {
+					"position": ["-1.0 - this", "-12 - this", "8.0 - this"]
+				},
+				"upperbody": {
+					"position": ["-1.0 - this", "-14 - this", "-3.0 - this"],
+					"rotation": ["90 - this", 0, 0]
+				}
+			}
+		},
+		"animation.wolf.shaking": {
+			"loop": true,
+			"bones": {
+				"body": {
+					"rotation": [0, 0, "variable.body_rot_z - this"]
+				},
+				"upperbody": {
+					"rotation": [0, 0, "variable.upper_body_rot_z - this"]
+				}
+			}
+		},
+		"dog_sitting": {
+			"loop": true,
+			"animation_length": 70.95833,
+			"bones": {
+				"head": {
+					"rotation": {
+						"0.0": {
+							"vector": [-17.5, 0, 0]
+						},
+						"70.9583": {
+							"vector": [-37.5, 0, 0]
+						}
+					},
+					"position": {
+						"0.0": {
+							"vector": [0, 1, 9.2]
+						},
+						"70.9583": {
+							"vector": [0, 3, 1]
+						}
+					}
+				},
+				"body": {
+					"rotation": {
+						"0.0": {
+							"vector": [-72.20572, 0, -180]
+						},
+						"70.9583": {
+							"vector": [-42.5, 0, 0]
+						}
+					},
+					"position": {
+						"0.0": {
+							"vector": [2, 1.5, 5]
+						},
+						"70.9583": {
+							"vector": [0, 0, -1]
+						}
+					}
+				},
+				"upperbody": {
+					"rotation": {
+						"0.0": {
+							"vector": [-44.5, 0, 0]
+						},
+						"70.9583": {
+							"vector": [5.20212, -6.64851, -3.47875]
+						}
+					},
+					"position": {
+						"0.0": {
+							"vector": [0, -1.5, -4.6]
+						},
+						"70.9583": {
+							"vector": [2, 1, 1]
+						}
+					}
+				},
+				"leg0": {
+					"rotation": {
+						"vector": [-27, 0, 0]
+					},
+					"position": {
+						"vector": [0.5, -1, 4]
+					}
+				},
+				"leg1": {
+					"rotation": {
+						"vector": [90, 0, 0]
+					},
+					"position": {
+						"vector": [-0.5, -7.5, 6]
+					}
+				},
+				"leg2": {
+					"rotation": {
+						"vector": [-27, 0, 0]
+					},
+					"position": {
+						"vector": [-0.5, -2.5, 4]
+					}
+				},
+				"leg3": {
+					"rotation": {
+						"vector": [90, 0, 0]
+					},
+					"position": {
+						"vector": [0.5, -6.5, 6]
+					}
+				},
+				"tail": {
+					"rotation": {
+						"vector": [13, 0, 1]
+					},
+					"position": {
+						"vector": [0, -8, 1]
+					}
+				}
+			}
+		},
+		"animation.wolf.tail_default": {
+			"loop": true,
+			"bones": {
+				"tail": {
+					"rotation": ["query.tail_angle * 57.3 - this", 0, "variable.tail_rot_z - this"]
+				}
+			}
+		}
+	}
+}

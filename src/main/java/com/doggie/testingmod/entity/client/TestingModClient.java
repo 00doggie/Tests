@@ -16,6 +16,8 @@ public class TestingModClient {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
         modEventBus.addListener(TestingModClient::onClientSetup);
+
+
     }
 
     public static void onClientSetup(FMLClientSetupEvent event) {

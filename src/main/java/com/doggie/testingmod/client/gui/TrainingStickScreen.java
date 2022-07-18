@@ -1,6 +1,7 @@
 
 package com.doggie.testingmod.client.gui;
 
+import com.doggie.testingmod.entity.GermanShepardEntity;
 import com.doggie.testingmod.world.inventory.TrainingStickMenu;
 
 import com.google.common.collect.Lists;
@@ -28,14 +29,14 @@ import com.mojang.blaze3d.systems.RenderSystem;
 import net.minecraftforge.client.gui.widget.ExtendedButton;
 
 
-public class TrainingStickScreen extends AbstractContainerScreen<TrainingStickMenu> implements Widget {
+public class TrainingStickScreen extends  AbstractContainerScreen<TrainingStickMenu> implements Widget {
     private final static HashMap<String, Object> guistate = TrainingStickMenu.guistate;
     private final Level world;
     private final int x, y, z;
     private final Player entity;
-    private ExtendedButton testButton;
-    private int health = 0;
-    private String h =Integer.toString(health);
+   public static  ExtendedButton testButton;
+    public static Integer health;
+
 
 
     public TrainingStickScreen(TrainingStickMenu container, Inventory inventory, Component text) {
@@ -49,11 +50,12 @@ public class TrainingStickScreen extends AbstractContainerScreen<TrainingStickMe
         this.imageHeight = 166;
 
 
+
+
     }
 
 
     private static final ResourceLocation texture = new ResourceLocation("testingmod:textures/gui/test_gui.png");
-
 
 
 
@@ -104,11 +106,21 @@ public class TrainingStickScreen extends AbstractContainerScreen<TrainingStickMe
 
     @Override
     public void init() {
+
         super.init();
         this.minecraft.keyboardHandler.setSendRepeatsToGui(true);
-
         testButton = addRenderableWidget(
-                new ExtendedButton(this.leftPos, this.topPos, 16, 16, new IncreaseSkill(this.health = health + 1),  btn -> Minecraft.getInstance().player.displayClientMessage(new TextComponent(h), false)));
+                new ExtendedButton(this.leftPos + 143, this.topPos + 48, 9, 9, new IncreaseSkill(health++),
+                        btn -> Minecraft.getInstance().player.displayClientMessage(new TextComponent(health.toString()), false)));
+        testButton = addRenderableWidget(
+                new ExtendedButton(this.leftPos + 143, this.topPos + 66, 9, 9, new IncreaseSkill(health++),
+                        btn -> Minecraft.getInstance().player.displayClientMessage(new TextComponent(health.toString()), false)));
+        testButton = addRenderableWidget(
+                new ExtendedButton(this.leftPos + 143, this.topPos + 83, 9, 9, new IncreaseSkill(health++),
+                        btn -> Minecraft.getInstance().player.displayClientMessage(new TextComponent(health.toString()), false)));
+
+
+    }
 
 
 
@@ -117,7 +129,9 @@ public class TrainingStickScreen extends AbstractContainerScreen<TrainingStickMe
 
 
 
-}
+
+
+
 
 
 
